@@ -2,13 +2,19 @@ const express = require('express');
 const app = express();
 const httpServer = require('http').createServer(app);
 const io = require('socket.io')(httpServer);
-const expressHandlebars = require('express-handlebars');
+const { create } = require('express-handlebars'); // Importar 'create'
 const productsRouter = require('./routes/products');
 const cartsRouter = require('./routes/carts');
 
 const PORT = 8080;
 
-app.engine('handlebars', expressHandlebars());
+// Configurar express-handlebars con opciones
+const hbs = create({
+    defaultLayout: 'main',
+    extname: '.handlebars', // Cambiar la extensión a .handlebars si es necesario
+});
+
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.get('/', (req, res) => {

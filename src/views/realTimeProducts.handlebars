@@ -7,18 +7,27 @@
     <script>
         const socket = io();
 
+
+        const productList = document.getElementById('product-list');
+
+        socket.on('cart_updated', ({ cartId, updatedProducts }) => {
+
+            productList.innerHTML = '';
+
+            updatedProducts.forEach(product => {
+                const productItem = document.createElement('li');
+                productItem.textContent = product.name;
+                productList.appendChild(productItem);
+            });
+        });
     </script>
 </head>
 
 <body>
     <h1>Lista de Productos en Tiempo Real</h1>
+    <ul id="product-list">
+        <!-- Los productos se agregarán acá -->
+    </ul>
 </body>
-<script>
-    const socket = io();
-
-    socket.on('cart_updated', ({ cartId, updatedProducts }) => {
-      
-    });
-</script>
 
 </html>
