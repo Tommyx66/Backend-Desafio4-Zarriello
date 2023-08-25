@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Real Time Products</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+    </script>
+</head>
+
+<body>
+    <h1>Lista de Productos en Tiempo Real</h1>
+</body>
+<script>
+    const socket = io();
+
+    socket.on('cart_updated', ({ cartId, updatedProducts }) => {
+      
+    });
+</script>
+
+</html>
